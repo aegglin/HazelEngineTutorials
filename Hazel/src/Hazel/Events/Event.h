@@ -12,9 +12,10 @@ namespace Hazel
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased,
-		MoustButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
+	// May want to filter certain events (e.g., say we want to just get mouse events) -- can be multiple
 	enum EventCategory
 	{
 		None = 0,
@@ -25,6 +26,9 @@ namespace Hazel
 		EventCategoryMouseButton	= BIT(4)
 	};
 
+	// These are just to avoid typing all of this on each type that derives from Event
+	// Static type is to know what type the event is at runtime, so that we don't need instance to check what type
+	// The virtual ones are so that we can check the type with a pointer to a certain event. This is called in the EventDispatcher
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type;}\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override {return #type;}
@@ -35,11 +39,13 @@ namespace Hazel
 		friend class EventDispatcher;
 
 	public:
+		// First three are pure virtual (i.e, they must be implemented)
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
+		// This is the method that will check if an event is in a certain category (see note above)
 		inline bool IsInCategory(EventCategory category)
 		{
 			return GetCategoryFlags() & category;

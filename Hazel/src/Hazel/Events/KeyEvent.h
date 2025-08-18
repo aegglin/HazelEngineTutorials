@@ -9,10 +9,10 @@ namespace Hazel
 	{
 	public:
 		inline int GetKeyCode() const{ return m_KeyCode; }
-		EVENT_CLASS_CATEGORY(EventCategoryKeyBoard | EventCategoryInput);
+		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keycode)
-			:m_KeyCode(keycode) {}
+			: m_KeyCode(keycode) {}
 		int m_KeyCode;
 	};
 
@@ -31,7 +31,7 @@ namespace Hazel
 		}
 
 		// Macro to create additional methods
-		EVENT_CLASS_TYPE(KeyPressed);
+		EVENT_CLASS_TYPE(KeyPressed)
 	private:
 		int m_RepeatCount;
 	};
@@ -49,7 +49,7 @@ namespace Hazel
 		}
 		
 		// Macro to create additional methods
-		EVENT_CLASS_TYPE(KeyReleased);
+		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
 }

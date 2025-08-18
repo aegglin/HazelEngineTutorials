@@ -26,6 +26,7 @@ namespace Hazel
 			HZ_TRACE(e);
 		}*/
 		HZ_TRACE(e);
+		//HZ_CORE_WARN(e);
 
 		while (true);
 	}
