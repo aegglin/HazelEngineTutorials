@@ -12,4 +12,4 @@
 	#error Hazel only supports Windows!
 #endif
 
-#define BIT(X) (1 << x) // shift by one place
+#define BIT(x) (1 << x) // shift by one place
