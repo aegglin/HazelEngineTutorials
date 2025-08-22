@@ -1,6 +1,7 @@
 #pragma once
 
-#include <GLFW.glfw3.h>
+#include "Window.h"
+#include <GLFW/glfw3.h>
 
 namespace Hazel 
 {
@@ -16,13 +17,13 @@ namespace Hazel
 
         // Windows attributes
         inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = Callback; }
-        void SetVSync(const WindowProps& props) override;
+        void SetVSync(bool enabled) override;
         bool IsVSync() const override;
     private:
         virtual void Init(const WindowProps& props);
         virtual void Shutdown();
     private:
-        GLFW* m_Window;
+        GLFWwindow* m_Window;
         struct WindowData
         {
             std::string Title;

@@ -33,6 +33,7 @@ namespace Hazel {
 		//window attributes
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
+		virtual bool IsVSync() const = 0;
 
 		//Must be implemented per platform
 		static Window* Create(const WindowProps& props = WindowProps());
