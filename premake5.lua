@@ -36,6 +36,7 @@ project "Hazel"
 	includedirs
 	{
 		"%{prj.name}/src",
+		"%{prj.name}/src/Hazel",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}"
 	}
